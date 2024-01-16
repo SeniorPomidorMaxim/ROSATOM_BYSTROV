@@ -1,0 +1,20 @@
+[{
+    "model": "myapp.company",
+     "pk": 1,
+      "fields": {"name": "ОАО 'ВЭЛ' ", "division": 1}},
+       {"model": "myapp.company",
+        "pk": 2,
+        "fields": {"name": "ОАО 'Урановый институт'", "division": 1}},
+         {"model": "myapp.company",
+          "pk": 3,
+           "fields": {"name": "'Техснабэкспорт'", "division": 1}},
+            {"model": "myapp.company",
+             "pk": 4,
+             "fields": {"name": "ОАО 'Атомэнергомаш'","division": 2}},
+              {"model": "myapp.company",
+               "pk": 5,
+                "fields": {"name": "ОАО 'Росэнергоатом'", "division": 3}},
+                 {"model": "myapp.company",
+                  "pk": 6,
+                   "fields": {"name": "ФГУП 'Росатом'", "division": 4}
+                   }]

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tz %}
+{% block title %}Список вопросов{% endblock %}
+
+{% block custom_styles %}
+<link rel="stylesheet" href="{% static 'css/form_get.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+        <h1 class="mb-4">Список вопросов</h1>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Дата и время</th>
+                            <th>Предприятие</th>
+                            <th>Вопрос</th>
+                            <th>E-mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for question in questions %}
+                            <tr>
+                                <td>{{ question.time_create|date:'d.m.Y H:i' }}</td>
+                                <td>{{ question.company }}</td>
+                                <td>{{ question.content }}</td>
+                                <td>{% if question.email %}{{ question.email }}{% else %}Не указан{% endif %}</td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="4">Нет доступных вопросов.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Дивизион</th>
+                            <th>Предприятие</th>
+                            <th>Количество поданных вопросов</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for company in companys %}
+                            <tr>
+                                <td>{{ company.division }}</td>
+                                <td>{{ company.name }}</td>
+                                <td>{{ company.question_set.count }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+    
+
+        {% endblock %}
+
+
+    

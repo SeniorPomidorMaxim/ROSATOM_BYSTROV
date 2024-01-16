@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tz %}
+{% block title %}Список вопросов{% endblock %}
+
+{% block custom_styles %}
+<link rel="stylesheet" href="{% static 'css/form_post.css' %}">
+{% endblock %}
+
+                            
+{% block content %}
+
+        <form method="post" action="{% url 'question' %}" class="custom-form">
+            {% csrf_token %}
+            <h1 style="text-align: center; ">Форма для вопросов на День Директора</h1>
+            <div class="form-group" >
+                <label for="id_form-division"> {{ form.division.label}}</label>  
+                <span class="required-field-marker" data-title="Поле обязательно для заполнения">*</span> 
+               <p> {{ form.division }}</p>
+               
+            </div>
+    
+            <div class="form-group" >
+                <label for="id_form-company">{{ form.company.label}}</label>
+                <span class="required-field-marker" data-title="Поле обязательно для заполнения">*</span>
+                <p>{{ form.company }}</p>
+                {% if form.company.errors %}
+                    <p class="error">{{ form.company.errors.0 }}</p>
+                {% endif %}
+            </div>
+            
+            
+    
+            <div class="form-group" >
+                <label for="id_form-custom_name_company">{{ form.custom_name_company.label}}</label>
+                <span class="required-field-marker" data-title="Если вы выбрали 'другое', то это поле обязательно для заполнения">*</span>
+                <p>{{ form.custom_name_company }} </p>
+                {% if form.custom_name_company.errors %}
+                    <p class="error">{{ form.custom_name_company.errors.0 }}</p>
+                {% endif %}
+            </div>
+    
+            <div class="form-group">
+                <label for="id_form-email">{{ form.email.label}}</label>
+                
+               <p> {{ form.email }}</p>
+            </div>
+    
+            <div class="form-group form-group-content">
+                <label for="id_form-content">{{ form.content.label}}</label>
+                <span class="required-field-marker" data-title="Поле обязательно для заполнения">*</span>
+                <p> {{ form.content }}</p>
+                <button type="submit" class="submit-button">Завершить опрос</button>
+            </div>
+        </form>
+
+        {% endblock %}
+    
+        
+        {% block script %}
+        <script src="{% static 'js/form_post.js' %}"></script>
+    {% endblock %}
+        
+    

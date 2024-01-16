@@ -1,0 +1,15 @@
+header img {
+    width: 175px; 
+    height: 39px; 
+    padding: 8px 0px 0px 10px; 
+}
+
+
+header::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #ccc; 
+    margin: 5px 0; 
+    clear: both; 
+}
